@@ -1,0 +1,11 @@
+*.js
+!*jest.config.js
+*node_modules
+*.cdk.staging
+*cdk.out
+*.env
+*dist
+*.next
+*out
+*build
+*.vercel

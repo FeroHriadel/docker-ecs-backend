@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: docker-test-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: dev_db
+      MYSQL_USER: dev_user
+      MYSQL_PASSWORD: dev_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - docker-test-network
+    ports:
+      - "3306:3306"
+
+  backend:
+    build: .
+    container_name: docker-test-backend
+    env_file:
+      - .env
+    depends_on:
+      - mysql  # Use the service name, not the container name
+    networks:
+      - docker-test-network
+    ports:
+      - "80:80"
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  docker-test-network:
+    driver: bridge
+
+
+
+# docker-compose up -d
