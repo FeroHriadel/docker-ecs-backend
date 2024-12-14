@@ -1,4 +1,4 @@
-# MY DOCKER PROJECT
+# DOCKER-ECS-BACKEND
 This project shows how to:
 - dockerize nodeJS api
 - dockerize nextJS frontend
