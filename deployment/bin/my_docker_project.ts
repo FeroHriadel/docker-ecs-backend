@@ -9,14 +9,14 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 
-/**
-vpc: ec2.Vpc;
-  ecrRepositoryUri: string;
-  ecrRepositoryArn: string;
-  fargateServiceArn: string;
-  ecsClusterArn: string;
-  ecsClusterName: string;
- */
+/***********************************************************************************************************
+Please deploy the stacks in the following order:
+1. RdsStack - then take manual steps described in README.md
+2. EcrStack - then take manual steps described in README.md
+3. EcsStack - then take manual steps described in README.md
+4. PipelineStack
+***********************************************************************************************************/
+
 
 
 const region = process.env.AWS_REGION!;
