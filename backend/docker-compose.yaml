@@ -19,8 +19,14 @@ services:
   backend:
     build: .
     container_name: docker-test-backend
-    env_file:
-      - .env
+    environment:
+      - NODE_ENV=dev
+      - PORT=80
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=dev_user
+      - DB_PASSWORD=dev_password
+      - DB_DATABASE=dev_db
     depends_on:
       - mysql  # Use the service name, not the container name
     networks:
