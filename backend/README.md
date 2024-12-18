@@ -105,9 +105,7 @@ CMD ["npm", "run", "start"]
 
 # docker build -t docker-test-backend .
 # docker run --env-file .env -p 80:80 docker-test-backend
+
 ```
-
 - $ `docker build -t docker-test-backend`
-
-
 ...

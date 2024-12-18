@@ -93,3 +93,25 @@ Put the github token & other github details into .env
   GITHUB_BRANCH=main
 
 - $ `cdk deploy PipelineStack --profile fhyahoo`
+
+
+### TO DO
+There's no certificate attached to the ALB. Implications:
+- It means FE (which is on https) cannot communicate with the server - browser will block it.
+- to attach the certificate check out the FE code: `/deployment/ecs-stack.ts`. You can use the same domain name for BE. Something along the lines:
+<br />
+
+```
+Assign Subdomains:
+
+Use a subdomain like api.yourdomain.com for your API and www.yourdomain.com (or just yourdomain.com) for your frontend.
+Setup Route53 DNS Records:
+
+In AWS Route53, create a DNS A or CNAME record for api.yourdomain.com pointing to your API's ALB.
+Create another record for yourdomain.com (and optionally www.yourdomain.com) pointing to your frontend's ALB.
+Attach SSL/TLS Certificates:
+
+Use AWS Certificate Manager (ACM) to request a certificate for both yourdomain.com and api.yourdomain.com.
+Attach the certificate to the ALBs for both the API and frontend.
+```
+
